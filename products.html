@@ -67,7 +67,11 @@
         <!-- Area produk (kiri) -->
         <div class="cat-main">
           <div class="cat-toolbar" id="cat-toolbar">
-            <!-- Filter kategori utama dibuat otomatis oleh js/products.js -->
+            <!-- Pencarian & filter kategori utama dibuat otomatis oleh js/products.js -->
+            <div class="cat-search">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <input type="search" id="cat-search" placeholder="Cari nama produk..." aria-label="Cari produk" autocomplete="off">
+            </div>
             <div class="cat-chips" id="cat-chips" role="group" aria-label="Filter kategori produk"></div>
             <p class="cat-status" id="cat-status" aria-live="polite"></p>
           </div>
@@ -133,8 +137,46 @@
     </div>
   </footer>
 
-  <!-- script.js = navbar mobile & bayangan header (global). products.js = data + logika katalog. -->
+  <!-- ============ POP-UP DETAIL PRODUK ============ -->
+  <div class="product-modal" id="product-modal" hidden>
+    <div class="product-modal-backdrop" data-close></div>
+    <div class="product-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="pm-title" aria-describedby="pm-desc">
+      <button class="product-modal-close" type="button" aria-label="Tutup detail produk" data-close>
+        <i class="bi bi-x-lg" aria-hidden="true"></i>
+      </button>
+
+      <div class="product-modal-media" id="pm-media"></div>
+
+      <div class="product-modal-body">
+        <p class="product-modal-cat" id="pm-cat"></p>
+        <h2 class="product-modal-title" id="pm-title"></h2>
+        <p class="product-modal-desc" id="pm-desc"></p>
+
+        <dl class="product-modal-meta">
+          <div class="product-modal-wide" id="pm-variant-row" hidden>
+            <dt>Untuk</dt>
+            <dd id="pm-variant"></dd>
+          </div>
+          <div>
+            <dt>Kemasan</dt>
+            <dd id="pm-pack"></dd>
+          </div>
+          <div>
+            <dt>Harga</dt>
+            <dd id="pm-price" class="product-modal-price"></dd>
+          </div>
+        </dl>
+
+        <a class="btn btn-primary product-modal-cta" href="index.html#contact">Tanya Produk</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- script.js = navbar mobile & bayangan header (global).
+       products-data.js = struktur katalog + data produk.
+       products.js = logika filter, kartu, dan pop-up. -->
   <script src="js/script.js" defer></script>
+  <script src="js/products-data.js" defer></script>
   <script src="js/products.js" defer></script>
 </body>
 </html>
